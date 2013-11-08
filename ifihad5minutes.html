@@ -1,0 +1,42 @@
+<head>
+  <title>ifihad5minutes</title>
+</head>
+
+<body>
+  {{loginButtons}}
+  {{> newActivity}}
+  {{> activitiesList}}
+</body>
+
+<template name="newActivity">
+  <h1>What would you do if you had 5 minutes?</h1>
+  <input type="text" class="whatiddo" />
+  <input type="button" class="post" value="Post" />
+</template>
+
+<template name="activitiesList">
+  <div class="activitiesList">
+    {{#each activities}}
+      {{> activity}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="activity">
+  <div class="activity">
+    <h1 class="description">{{description}}</h1>
+    <div class="owner">{{owner}}</div>
+    <h2>
+      {{howManyHaveDoneMessage}}
+      {{#unless hasUserDoneThat}}
+        <button class="ivedone">I've done that</button>
+      {{/unless}}
+    </h2>
+    <h2>
+      {{howManyWouldDoMessage}}
+      {{#unless wouldUserDoThat}}
+        <button class="iddo">I'd do that</button>
+      {{/unless}}
+    </h2>
+  </div>
+</template>
